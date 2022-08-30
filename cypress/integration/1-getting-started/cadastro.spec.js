@@ -29,7 +29,7 @@ describe('Cadastro ',() => {
     
 
     
-    /*it('Email inválido', () => {
+    it('Email inválido', () => {
 
         var entregador = dadosCadastrais.entregador()
         entregador.email = 'mariaduda@com.br'
@@ -39,7 +39,7 @@ describe('Cadastro ',() => {
         cadastro.submit()
         cadastro.alertMessageShouldBe('Oops! email inválido')
     })
-    */
+    
 
     
     context('Campos obrigatórios', function() {
@@ -63,7 +63,7 @@ describe('Cadastro ',() => {
             })
         })
 
-        /*it('Whatsapp inválido', () => {
+        it('Whatsapp inválido', () => {
             var entregador = dadosCadastrais.entregador()
             entregador.whatsapp = '12888814'
 
@@ -83,6 +83,6 @@ describe('Cadastro ',() => {
             cadastro.submit()
             cadastro.alertMessageShouldBe('Informe um CEP válido')  
 
-        })*/ 
+        }) 
     })
 })
