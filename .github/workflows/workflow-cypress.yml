@@ -3,7 +3,7 @@ name: Cypress Regression Tests
 on: [push]
 
 jobs:
-
+ 
   ui-chrome-tests:
     runs-on: ubuntu-latest
     container: cypress/browsers:node14.17.0-chrome88-ff89
@@ -14,9 +14,10 @@ jobs:
         uses: actions/checkout@v2
       
       - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
-          install-command: yarn install
+          install: false
+          start: yarn start:ci
           wait-on: ${{ secrets.BASE_URL }}
           wait-on-timeout: 120
           browser: chrome
