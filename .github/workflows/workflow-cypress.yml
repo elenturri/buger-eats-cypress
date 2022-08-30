@@ -6,9 +6,10 @@ jobs:
  
   ui-chrome-tests:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node14.17.0-chrome88-ff89
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    
     strategy:
-      fail-fast: false
+       fail-fast: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,8 +18,8 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: false
-          start: yarn start:ci
-          wait-on: ${{ secrets.BASE_URL }}
+          start: yarn start
+          wait-on: 'https://buger-eats.vercel.app/'
           wait-on-timeout: 120
           browser: chrome
           record: true
