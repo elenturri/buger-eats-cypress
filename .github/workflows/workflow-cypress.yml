@@ -1,0 +1,31 @@
+name: Cypress Regression Tests
+
+on: [push]
+
+jobs:
+ 
+  ui-chrome-tests:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
+    
+    strategy:
+       fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: 'UI Tests - Chrome'
+        uses: cypress-io/github-action@v4
+        with:
+          install: false
+          start: yarn start
+          wait-on: 'https://buger-eats.vercel.app/'
+          wait-on-timeout: 120
+          browser: chrome
+          record: true
+          parallel: true
+          group: 'UI - Chrome'
+          spec: cypress/integration/*
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
