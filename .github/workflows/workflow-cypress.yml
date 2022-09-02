@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
       
       - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v3.1.0
+        uses: cypress-io/github-action@v3.1.0 # lock version
         with:
           command: npx yarn dlx cypress@v9 run --headless  --config baseUrl=PATH,retries=2 --config-file cypress.json
           install-command: yarn install --immutable
@@ -27,7 +27,7 @@ jobs:
           record: true
           parallel: true
           group: 'UI - Chrome'
-          spec: buger-eats-cypress/cypress/integration/*
+          spec: cypress/integration/*
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
