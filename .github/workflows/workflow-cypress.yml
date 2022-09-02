@@ -15,8 +15,9 @@ jobs:
         uses: actions/checkout@v2
       
       - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v3.1.0
         with:
+          command-prefix: yarn
           install: false
           start: yarn start
           wait-on: 'https://buger-eats.vercel.app/'
